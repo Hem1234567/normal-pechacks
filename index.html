@@ -74,7 +74,7 @@
                                 textShadow: '0 0 10px hsl(210, 100%, 60%, 0.5), 0 0 20px hsl(210, 100%, 60%, 0.3), 0 0 30px hsl(210, 100%, 60%, 0.2)'
                             },
                             'to': { 
-                                textShadow: '0 0 20px hsl(210, 100%, 60%, 0.8), 0 0 30px hsl(210, 100%, 60%, 0.6), 0 0 40px hsl(210, 极100%, 60%, 0.4)'
+                                textShadow: '0 0 20px hsl(210, 100%, 60%, 0.8), 0 0 30px hsl(210, 100%, 60%, 0.6), 0 极0 40px hsl(210, 100%, 60%, 0.4)'
                             }
                         },
                         'rotate-slow': {
@@ -115,7 +115,7 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: hsl(0, 0%, 0%);
+            background: hsl(极0, 0%, 0%);
         }
 
         ::-webkit-scrollbar-thumb {
@@ -146,7 +146,7 @@
         }
 
         .glow-purple {
-            box-shadow: 0 极0 30px hsl(270, 100%, 65%, 0.5);
+            box-shadow: 0 0 30px hsl(270, 100%, 65%, 0.5);
         }
 
         .glow-pink {
@@ -154,7 +154,7 @@
         }
 
         .shadow-neon {
-            box-shadow: 0 0 50px hsl(210, 100%, 60%, 0.3), 0 0 100px hsl(270, 100%, 65%, 0.2);
+            box-shadow: 0 0 50px hsl(210, 100%, 60%, 极0.3), 0 0 100px hsl(270, 100%, 65%, 0.2);
         }
 
         /* Gradient Backgrounds */
@@ -200,7 +200,7 @@
         }
 
         .btn-hero:hover {
-            background: linear-gradient(135极deg, hsl(210, 100%, 60%), hsl(270, 100%, 65%));
+            background: linear-gradient(135deg, hsl(210, 100%, 60%), hsl(270, 100%, 65%));
             transform: translateY(-2px);
             box-shadow: 0 0 30px hsl(210, 100%, 60%, 0.5);
         }
@@ -225,10 +225,10 @@
 
         /* Additional styles for the About section */
         .gradient-text {
-            background: linear-gradient(90deg, hsl(210, 100%, 60%), hsl(270, 100%, 65%));
+            background: linear-gradient(90极deg, hsl(210, 100%, 60%), hsl(270, 100%, 65%));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
+            background-cl极ip: text;
         }
         
         .hover-neon {
@@ -247,7 +247,7 @@
             position: relative;
         }
         
-        .cyber-border::before {
+极        .cyber-border::before {
             content: '';
             position: absolute;
             top: -2px;
@@ -496,13 +496,13 @@
             z-index: -1;
         }
 
-        .custom-button:hover .overlay {
+        .custom-button:hover .极overlay {
             left: 0;
         }
 
         .custom-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10极px 20px rgba(0, 0, 0, 0.2);
         }
 
         /* Specific button colors */
@@ -530,13 +530,43 @@
             box-shadow: 0 0 15px hsl(270, 100%, 65%, 0.7), 0 0 25px hsl(270, 100%, 65%, 0.5);
         }
         
+        /* Sticky navbar */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        /* Mobile Responsive Styles */
         @media (max-width: 768px) {
+            /* Navigation */
+            .sticky-nav .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .sticky-nav .btn-project {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.875rem;
+            }
+            
+            /* Home Section */
             .heading-pec {
-                font-size: 4rem;
+                font-size: 3.5rem;
+                display: flex;
+                flex-direction: column;
+                line-height: 1.1;
+            }
+            
+            .heading-pec .outline {
+                margin-top: 0.5rem;
+                font-size: 3.5rem;
             }
             
             .CLH {
                 font-size: 1.5rem;
+                margin-top: 2rem;
+                margin-bottom: 2rem;
             }
             
             #hero-sub {
@@ -547,13 +577,59 @@
                 padding: 0.6rem 1.2rem;
                 font-size: 0.9rem;
             }
+            
+            /* About Section */
+            .text-5xl {
+                font-size: 3rem;
+            }
+            
+            .text-7xl {
+                font-size: 4rem;
+            }
+            
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .icon-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .icon-container p {
+                font-size: 1rem;
+            }
+            
+            /* Adjust iframe size on mobile */
+            iframe {
+                height: 300px;
+            }
         }
-        
-        /* Sticky navbar */
-        .sticky-nav {
-            position: sticky;
-            top: 0;
-            z-index: 50;
+
+        @media (max-width: 480px) {
+            .heading-pec {
+                font-size: 2.5rem;
+            }
+            
+            .heading-pec .outline {
+                font-size: 2.5rem;
+            }
+            
+            .CLH {
+                font-size: 1.2rem;
+            }
+            
+            .icon-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .text-5xl {
+                font-size: 2.5rem;
+            }
+            
+            .text-7xl {
+                font-size: 3rem;
+            }
         }
     </style>
 </head>
@@ -567,7 +643,7 @@
                     <img src="./assets//pechacks-01.png" alt="CRYPTECHO Logo" class="h-8 w-auto">
                 </div>
 
-                <!-- Navigation Links -->
+                <!-- Navigation Links - Hidden on mobile -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="text-[hsl(0_0%_100%/0.8)] hover:text-foreground transition-colors duration-300 font-medium">Home</a>
                     <a href="#about" class="text-[hsl(0_0%_100%/0.8)] hover:text-foreground transition-colors duration-300 font-medium">About</a>
@@ -577,8 +653,30 @@
                     <a href="#services" class="text-[hsl(0_0%_100%/0.8)] hover:text-foreground transition-colors duration-300 font-medium">FAQs</a>
                 </div>
 
-                <!-- CTA Button -->
-                <button class="btn btn-project btn-xl">
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- CTA Button - Hidden on mobile -->
+                <button class="hidden md:block btn btn-project btn-xl">
+                    Register here
+                </button>
+            </div>
+
+            <!-- Mobile menu (hidden by default) -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-4 pb-4">
+                <a href="#home" class="block text-[hsl(0_0%_100%/0.8)] hover:text-foreground transition-colors duration-300 font-medium">Home</a>
+                <a href="#about" class="block text-[hsl(0_0%_100%/0.8)] hover:text-foreground transition-colors duration-300 font-medium">About</a>
+                <a href="#vision" class="block text-[hsl(0_0%_100%/0.8)] hover:text-foreground transition-colors duration-300 font-medium">Domains</a>
+                <a href="#services" class="block text-[hsl(0_0%_100%/0.8)] hover:text-foreground transition-colors duration-300 font-medium">Prizes</a>
+                <a href="#services" class="block text-[hsl(0_0%_100%/0.8)] hover:text-foreground transition-colors duration-300 font-medium">Partners</a>
+                <a href="#services" class="block text-[hsl(0_0%_100%/0.8)] hover:text-foreground transition-colors duration-300 font-medium">FAQs</a>
+                <button class="w-full btn btn-project btn-xl mt-4">
                     Register here
                 </button>
             </div>
@@ -586,7 +684,7 @@
     </nav>
 
     <!-- Hero Section - Updated Content -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center">
+    <section id="home" class="relative min-h-screen flex items-center justify-center px-4">
         <!-- Updated Content -->
         <div class="container-home">
             <div>
@@ -644,7 +742,7 @@
             <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-float" style="animation-delay: '2s'"></div>
         </div>
         
-        <div class="container mx-auto max极-w-7xl relative z-10">
+        <div class="container mx-auto max-w-7xl relative z-10">
             <!-- Centered Title -->
             <div class="text-center mb-12">
                 <h2 class="text-5xl md:text-7xl font-bold mb-4 tracking-wider inline-block py-10 neon-text">
@@ -683,7 +781,6 @@
                 </div>
             </div>
 
-            <!-- Icon Container - Replaced the stats grid -->
             <!-- Icon Container - Replaced the stats grid -->
             <div class="icon-container grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
                 <div class="icon-man text-center">
@@ -748,6 +845,16 @@
                     }
                 });
             });
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
         });
     </script>
 </body>
