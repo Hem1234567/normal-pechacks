@@ -1,0 +1,1274 @@
+/* styles.css */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            height: 300vh; /* For scroll demonstration */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            color: white;
+        }
+        
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .hud-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .hud-frame {
+            position: fixed;
+            border: 1px solid #4B5563;
+            display: flex;
+            flex-direction: column;
+            z-index: 20;
+            background-color: transparent;
+            
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+        }
+        
+        .frame-corner {
+            position: absolute;
+            background-color: #4B5563;
+        }
+        
+        .frame-corner-h {
+            width: 12px;
+            height: 1px;
+        }
+        
+        .frame-corner-v {
+            width: 1px;
+            height: 12px;
+        }
+        
+        .hud-title {
+            position: fixed;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            z-index: 30;
+            pointer-events: none;
+            color: white;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        
+        @media (max-width: 639px) {
+            .hud-frame {
+                inset: 12px;
+            }
+            .hud-title {
+                font-size: 3rem;
+                line-height: 1;
+                top: 20%;
+                white-space: nowrap;
+            }
+        }
+        
+        @media (min-width: 640px) and (max-width: 1023px) {
+            .hud-frame {
+                inset: 24px;
+            }
+            .hud-title {
+                font-size: 4.5rem;
+                line-height: 1;
+                top: 25%;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .hud-frame {
+                inset: 40px;
+            }
+            .hud-title {
+                font-size: 6rem;
+                line-height: 1;
+                top: 30%;
+            }
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 10;
+            color: #9CA3AF;
+            font-size: 0.9rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.7;
+            }
+        }
+
+         /* Space Button Styles */
+        .space-btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 13rem;
+          overflow: hidden;
+          height: 3rem;
+          background-size: 300% 300%;
+          cursor: pointer;
+          backdrop-filter: blur(1rem);
+          border-radius: 5rem;
+          transition: 0.5s;
+          animation: gradient_301 5s ease infinite;
+          border: double 4px transparent;
+          background-image: linear-gradient(#212121, #212121),
+            linear-gradient(
+              137.48deg,
+              #ffdb3b 10%,
+              #fe53bb 45%,
+              #8f51ea 67%,
+              #0044ff 87%
+            );
+          background-origin: border-box;
+          background-clip: content-box, border-box;
+        }
+
+        #container-stars {
+          position: absolute;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          transition: 0.5s;
+          backdrop-filter: blur(1rem);
+          border-radius: 5rem;
+        }
+
+        .space-btn strong {
+          z-index: 2;
+          font-family: "Arial", sans-serif;
+          font-size: 12px;
+          letter-spacing: 5px;
+          color: #ffffff;
+          text-shadow: 0 0 4px white;
+        }
+
+        #glow {
+          position: absolute;
+          display: flex;
+          width: 12rem;
+        }
+
+        .circle {
+          width: 100%;
+          height: 30px;
+          filter: blur(2rem);
+          animation: pulse_3011 4s infinite;
+          z-index: -1;
+        }
+
+        .circle:nth-of-type(1) {
+          background: rgba(254, 83, 186, 0.636);
+        }
+
+        .circle:nth-of-type(2) {
+          background: rgba(142, 81, 234, 0.704);
+        }
+
+        .space-btn:hover #container-stars {
+          z-index: 1;
+          background-color: #212121;
+        }
+
+        .space-btn:hover {
+          transform: scale(1.1);
+        }
+
+        .space-btn:active {
+          border: double 4px #fe53bb;
+          background-origin: border-box;
+          background-clip: content-box, border-box;
+          animation: none;
+        }
+
+        .space-btn:active .circle {
+          background: #fe53bb;
+        }
+
+        #stars {
+          position: relative;
+          background: transparent;
+          width: 200rem;
+          height: 200rem;
+        }
+
+        #stars::after {
+          content: "";
+          position: absolute;
+          top: -10rem;
+          left: -100rem;
+          width: 100%;
+          height: 100%;
+          animation: animStarRotate 90s linear infinite;
+        }
+
+        #stars::after {
+          background-image: radial-gradient(#ffffff 1px, transparent 1%);
+          background-size: 50px 50px;
+        }
+
+        #stars::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -50%;
+          width: 170%;
+          height: 500%;
+          animation: animStar 60s linear infinite;
+        }
+
+        #stars::before {
+          background-image: radial-gradient(#ffffff 1px, transparent 1%);
+          background-size: 50px 50px;
+          opacity: 0.5;
+        }
+
+        @keyframes animStar {
+          from {
+            transform: translateY(0);
+          }
+
+          to {
+            transform: translateY(-135rem);
+          }
+        }
+
+        @keyframes animStarRotate {
+          from {
+            transform: rotate(360deg);
+          }
+
+          to {
+            transform: rotate(0);
+          }
+        }
+
+        @keyframes gradient_301 {
+          0% {
+            background-position: 0% 50%;
+          }
+
+          50% {
+            background-position: 100% 50%;
+          }
+
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+
+        @keyframes pulse_3011 {
+          0% {
+            transform: scale(0.75);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+          }
+
+          70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+          }
+
+          100% {
+            transform: scale(0.75);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+          }
+        }
+        
+        /* Galaxy Button Styles */
+        .galaxy-button {
+          position: relative;
+          height: 3rem;
+          flex: 1;
+          min-width: 0;
+        }
+        
+        .galaxy-button .text {
+          translate: 2% -6%;
+          letter-spacing: 0.01ch;
+          color: hsl(0 0% calc(60% + (var(--active, 0) * 26%)));
+          z-index: 999;
+          padding: 0 34px;
+          font-weight: 600;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+        }
+        
+        .galaxy-button .text::before {
+          content: "";
+          position: absolute;
+          top: -290%;
+          left: 90%;
+          rotate: -45deg;
+          width: 5em;
+          height: 1px;
+          background: linear-gradient(90deg, #ffffff, transparent);
+          animation: 4s shootingStar ease-in-out infinite;
+          transition: 1s ease;
+          z-index: -1;
+          animation-delay: 1s;
+          display: none;
+        }
+        
+        .galaxy-button .text::after {
+          content: "";
+          display: none;
+          position: absolute;
+          top: -290%;
+          left: 10%;
+          rotate: -45deg;
+          width: 5em;
+          height: 1px;
+          background: linear-gradient(90deg, #ffffff, transparent);
+          animation: 7s shootingStar ease-in-out infinite;
+          animation-delay: 3s;
+        }
+        
+        .space-button:hover .text::before,
+        .space-button:hover .text::after {
+          display: block;
+        }
+        
+        .galaxy::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 2px;
+          height: 2px;
+          border-radius: 50%;
+          opacity: 1;
+          box-shadow:
+            140px 20px #fff,
+            425px 20px #fff,
+            70px 120px #fff,
+            20px 130px #fff,
+            110px 80px #fff,
+            280px 80px #fff,
+            250px 350px #fff,
+            280px 230px #fff,
+            220px 190px #fff,
+            450px 100px #fff,
+            380px 80px #fff,
+            520px 50px #fff;
+          z-index: -1;
+          transition: all 1.5s ease-in-out;
+          animation: 1s glowing-stars linear alternate infinite;
+          animation-delay: 0.4s;
+        }
+        
+        .galaxy::after {
+          content: "";
+          position: absolute;
+          top: -150px;
+          left: -65px;
+          width: 2px;
+          height: 2px;
+          border-radius: 50%;
+          opacity: 1;
+          box-shadow:
+            490px 330px #fff,
+            420px 300px #fff,
+            320px 280px #fff,
+            380px 350px #fff,
+            546px 170px #fff,
+            420px 180px #fff,
+            370px 150px #fff,
+            200px 250px #fff,
+            80px 20px #fff,
+            190px 50px #fff,
+            270px 20px #fff,
+            120px 230px #fff,
+            350px -1px #fff,
+            150px 369px #fff;
+          z-index: -1;
+          transition: all 2s ease-in-out;
+          animation: 1s glowing-stars linear alternate infinite;
+          animation-delay: 0.8s;
+        }
+        
+        .space-button {
+          --cut: 0.1em;
+          --active: 0;
+          --bg: radial-gradient(
+                120% 120% at 126% 126%,
+                hsl(0 calc(var(--active) * 97%) 98% / calc(var(--active) * 0.9)) 40%,
+                transparent 50%
+              )
+              calc(100px - (var(--active) * 100px)) 0 / 100% 100% no-repeat,
+            radial-gradient(
+                120% 120% at 120% 120%,
+                hsl(0 calc(var(--active) * 97%) 70% / calc(var(--active) * 1)) 30%,
+                transparent 70%
+              )
+              calc(100px - (var(--active) * 100px)) 0 / 100% 100% no-repeat,
+            hsl(0 calc(var(--active) * 100%) calc(12% - (var(--active) * 8%)));
+          background: var(--bg);
+          font-size: 1.4rem;
+          font-weight: 500;
+          border: 0;
+          cursor: pointer;
+          padding: 0.9em 1.3em;
+          display: flex;
+          align-items: center;
+          gap: 0.25em;
+          white-space: nowrap;
+          border-radius: 2rem;
+          position: relative;
+          box-shadow:
+            0 0 calc(var(--active) * 6em) calc(var(--active) * 3em)
+              hsla(12, 97%, 61%, 0.3),
+            0 0.05em 0 0
+              hsl(0, calc(var(--active) * 97%), calc((var(--active) * 50%) + 30%)) inset,
+            0 -0.05em 0 0 hsl(0, calc(var(--active) * 97%), calc(var(--active) * 10%)) inset;
+          transition:
+            box-shadow 0.25s ease-out,
+            scale 0.25s,
+            background 0.25s;
+          scale: calc(1 + (var(--active) * 0.1));
+          transform-style: preserve-3d;
+          perspective: 100vmin;
+          overflow: hidden;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+        }
+        
+        /* Blue theme for Visit 2.0 button */
+        .blue-theme {
+          --bg: radial-gradient(
+                120% 120% at 126% 126%,
+                hsl(220 calc(var(--active) * 97%) 98% / calc(var(--active) * 0.9)) 40%,
+                transparent 50%
+              )
+              calc(100px - (var(--active) * 100px)) 0 / 100% 100% no-repeat,
+            radial-gradient(
+                120% 120% at 120% 120%,
+                hsl(220 calc(var(--active) * 97%) 70% / calc(var(--active) * 1)) 30%,
+                transparent 70%
+              )
+              calc(100px - (var(--active) * 100px)) 0 / 100% 100% no-repeat,
+            hsl(220 calc(var(--active) * 100%) calc(12% - (var(--active) * 8%)));
+          box-shadow:
+            0 0 calc(var(--active) * 6em) calc(var(--active) * 3em)
+              hsla(220, 97%, 61%, 0.3),
+            0 0.05em 0 0
+              hsl(220, calc(var(--active) * 97%), calc((var(--active) * 50%) + 30%)) inset,
+            0 -0.05em 0 0 hsl(220, calc(var(--active) * 97%), calc(var(--active) * 10%)) inset;
+        }
+        
+        .blue-theme:active {
+          --bg: radial-gradient(
+                120% 120% at 126% 126%,
+                hsl(220 calc(var(--active) * 97%) 98% / calc(var(--active) * 0.9)) 40%,
+                transparent 50%
+              )
+              calc(100px - (var(--active) * 100px)) 0 / 100% 100% no-repeat,
+            radial-gradient(
+                120% 120% at 120% 120%,
+                hsl(220 calc(var(--active) * 97%) 70% / calc(var(--active) * 1)) 30%,
+                transparent 70%
+              )
+              calc(100px - (var(--active) * 100px)) 0 / 100% 100% no-repeat,
+            hsl(220 calc(var(--active) * 100%) calc(12% - (var(--active) * 8%)));
+          box-shadow:
+            0 0 calc(var(--active) * 6em) calc(var(--active) * 3em)
+              hsl(220 97% 61% / 0.5),
+            0 0.05em 0 0
+              hsl(220 calc(var(--active) * 97%) calc((var(--active) * 50%) + 30%)) inset,
+            0 -0.05em 0 0 hsl(220 calc(var(--active) * 97%) calc(var(--active) * 10%)) inset;
+        }
+        
+        .space-button:active {
+          scale: 1;
+        }
+
+        /* Apply wobble animation on active button */
+        .space-button:active .text {
+          font-weight: 300;
+          animation:
+            wobble 0.6s ease-in-out infinite,
+            blurMove 1.5s ease-in-out infinite;
+          text-shadow:
+            5px 5px 20px rgba(255, 255, 255, 0.8),
+            10px 10px 30px rgba(255, 0, 255, 0.6);
+        }
+
+        /* Wobble animation */
+        @keyframes wobble {
+          0%,
+          100% {
+            transform: translate(0, 0);
+          }
+          25% {
+            transform: translate(-2px, -10px);
+          }
+          50% {
+            transform: translate(2px, 3px);
+          }
+          75% {
+            transform: translate(-1px, 5px);
+          }
+        }
+
+        /* Blur move animation */
+        @keyframes blurMove {
+          0%,
+          100% {
+            text-shadow:
+              5px 5px 20px rgba(255, 255, 255, 0.8),
+              10px 10px 30px rgba(255, 0, 255, 0.6);
+          }
+          50% {
+            filter: blur(1px);
+            text-shadow:
+              10px 10px 25px rgba(255, 255, 255, 0.8),
+              15px 15px 35px rgba(255, 0, 255, 0.6);
+          }
+        }
+
+        .galaxy:active::before {
+          animation: circling 2s linear infinite;
+        }
+        
+        .galaxy:active::after {
+          animation: circling 1.5s linear infinite;
+        }
+
+        @keyframes circling {
+          0% {
+            transform: translate(-10px, -20%) rotate(0deg);
+          }
+          100% {
+            transform: translate(-10px, -20%) rotate(200deg);
+          }
+        }
+        
+        .galaxy {
+          position: absolute;
+          width: 100%;
+          aspect-ratio: 1;
+          top: 50%;
+          left: 50%;
+          translate: -50% -50%;
+          overflow: hidden;
+          opacity: var(--active);
+          transition: opacity 0.25s;
+        }
+
+        @keyframes move-x {
+          0% {
+            translate: -100px 0;
+          }
+          100% {
+            translate: 100px 0;
+          }
+        }
+        
+        @keyframes move-y {
+          0% {
+            transform: translate(0, -50px);
+          }
+          100% {
+            transform: translate(0, 50px);
+          }
+        }
+
+        .backdrop {
+          position: absolute;
+          inset: var(--cut);
+          background: var(--bg);
+          border-radius: 2rem;
+          transition: background 0.25s;
+        }
+
+        .space-button:is(:hover, :focus-visible) {
+          --active: 1;
+        }
+
+        /* ANIMATIONS */
+        @keyframes shootingStar {
+          0% {
+            transform: translateX(0) translateY(0);
+            opacity: 1;
+          }
+          50% {
+            transform: translateX(-55em) translateY(0);
+            opacity: 1;
+          }
+          70% {
+            transform: translateX(-70em) translateY(0);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(0) translateY(0);
+            opacity: 0;
+          }
+        }
+
+        @keyframes glowing-stars {
+          0% {
+            opacity: 0;
+          }
+
+          50% {
+            opacity: 1;
+          }
+
+          100% {
+            opacity: 0;
+          }
+        }
+        
+        /* Spider-Verse Button Styles */
+        .spiderverse-button-wrapper {
+          position: relative;
+          transform-style: preserve-3d;
+          transition: transform 0.2s ease;
+          width: 100%;
+          margin-top: 16px;
+        }
+
+        .spiderverse-button {
+          position: relative;
+          padding: 15px 30px;
+          font-size: 1.2rem;
+          font-weight: 900;
+          border: none;
+          border-radius: 50px;
+          cursor: pointer;
+          background: #fff;
+          color: #000;
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          transform-style: preserve-3d;
+          transition: all 0.15s ease;
+          font-family: Arial, sans-serif;
+          text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .glitch-layers {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+        }
+
+        .glitch-layer {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #fff;
+          border-radius: 50px;
+          opacity: 0;
+          transition: all 0.15s ease;
+          pointer-events: none;
+        }
+
+        .layer-1 {
+          color: #0ff;
+          transform-origin: center;
+        }
+
+        .layer-2 {
+          color: #f0f;
+          transform-origin: center;
+        }
+
+        .spiderverse-button-wrapper:hover .layer-1 {
+          opacity: 1;
+          animation: glitchLayer1 0.4s steps(2) infinite;
+        }
+
+        .spiderverse-button-wrapper:hover .layer-2 {
+          opacity: 1;
+          animation: glitchLayer2 0.4s steps(2) infinite;
+        }
+
+        .spiderverse-button-wrapper:hover .spiderverse-button {
+          animation: buttonGlitch 0.3s steps(2) infinite;
+          box-shadow:
+            0 0 20px rgba(255, 255, 255, 0.5),
+            0 0 30px rgba(0, 255, 255, 0.5),
+            0 0 40px rgba(255, 0, 255, 0.5);
+        }
+
+        .noise {
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: repeating-radial-gradient(
+            circle at 50% 50%,
+            transparent 0,
+            rgba(0, 0, 0, 0.1) 1px,
+            transparent 2px
+          );
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity 0.3s;
+          animation: noise 0.2s steps(2) infinite;
+        }
+
+        .spiderverse-button-wrapper:hover .noise {
+          opacity: 1;
+        }
+
+        @keyframes buttonGlitch {
+          0% {
+            transform: translate(0) scale(1.1);
+          }
+          25% {
+            transform: translate(-10px, 5px) scale(1.15) skew(-5deg);
+          }
+          50% {
+            transform: translate(10px, -5px) scale(1.1) skew(5deg);
+          }
+          75% {
+            transform: translate(-15px, -5px) scale(1.05) skew(-3deg);
+          }
+          100% {
+            transform: translate(0) scale(1.1);
+          }
+        }
+
+        @keyframes glitchLayer1 {
+          0% {
+            transform: translate(-20px, -10px) scale(1.1) skew(-10deg);
+            clip-path: polygon(0 20%, 100% 20%, 100% 50%, 0 50%);
+          }
+          25% {
+            transform: translate(20px, 10px) scale(1.2) skew(10deg);
+            clip-path: polygon(0 30%, 100% 30%, 100% 60%, 0 60%);
+          }
+          50% {
+            transform: translate(-15px, 5px) scale(0.9) skew(-5deg);
+            clip-path: polygon(0 10%, 100% 10%, 100% 40%, 0 40%);
+          }
+          75% {
+            transform: translate(15px, -5px) scale(1.3) skew(5deg);
+            clip-path: polygon(0 40%, 100% 40%, 100% 70%, 0 70%);
+          }
+          100% {
+            transform: translate(-20px, -10px) scale(1.1) skew(-10deg);
+            clip-path: polygon(0 20%, 100% 20%, 100% 50%, 0 50%);
+          }
+        }
+
+        @keyframes glitchLayer2 {
+          0% {
+            transform: translate(20px, 10px) scale(1.1) skew(10deg);
+            clip-path: polygon(0 50%, 100% 50%, 100% 80%, 0 80%);
+          }
+          25% {
+            transform: translate(-20px, -10px) scale(1.2) skew(-10deg);
+            clip-path: polygon(0 60%, 100% 60%, 100% 90%, 0 90%);
+          }
+          50% {
+            transform: translate(15px, -5px) scale(0.9) skew(5deg);
+            clip-path: polygon(0 40%, 100% 40%, 100% 70%, 0 70%);
+          }
+          75% {
+            transform: translate(-15px, 5px) scale(1.3) skew(-5deg);
+            clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%);
+          }
+          100% {
+            transform: translate(20px, 10px) scale(1.1) skew(10deg);
+            clip-path: polygon(0 50%, 100% 50%, 100% 80%, 0 80%);
+          }
+        }
+
+        @keyframes noise {
+          0% {
+            transform: translate(0, 0);
+          }
+          10% {
+            transform: translate(-5%, -5%);
+          }
+          20% {
+            transform: translate(10%, 5%);
+          }
+          30% {
+            transform: translate(-5%, 10%);
+          }
+          40% {
+            transform: translate(15%, -5%);
+          }
+          50% {
+            transform: translate(-10%, 15%);
+          }
+          60% {
+            transform: translate(5%, -10%);
+          }
+          70% {
+            transform: translate(-15%, 5%);
+          }
+          80% {
+            transform: translate(10%, 10%);
+          }
+          90% {
+            transform: translate(-5%, 15%);
+          }
+          100% {
+            transform: translate(0, 0);
+          }
+        }
+
+        .glitch-slice {
+          position: absolute;
+          width: 120%;
+          height: 5px;
+          background: #fff;
+          opacity: 0;
+          animation: slice 3s linear infinite;
+          pointer-events: none;
+        }
+
+        @keyframes slice {
+          0% {
+            top: -10%;
+            opacity: 0;
+          }
+          1% {
+            opacity: 0.5;
+          }
+          3% {
+            opacity: 0;
+          }
+          50% {
+            top: 110%;
+          }
+          100% {
+            top: 110%;
+          }
+        }
+        
+        /* Container for buttons */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .button-row {
+            display: flex;
+            width: 100%;
+            gap: 16px;
+        }
+        
+        .button-row .hud-button {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .galaxy-button, .spiderverse-button-wrapper {
+            position: relative;
+            z-index: 1000;
+        }
+
+        /* Add these styles to your existing CSS */
+        @media (max-width: 639px) {
+            .button-container {
+                margin-top: 280px !important;
+                padding: 0 20px;
+            }
+            
+            .button-row {
+                flex-direction: column;
+            }
+            
+            .galaxy-button, .spiderverse-button-wrapper {
+                width: 100%;
+                margin-bottom: 12px;
+            }
+            
+            .space-button, .spiderverse-button {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .space-btn {
+                width: 100%;
+                margin-bottom: 12px;
+            }
+            
+            .hud-title {
+                font-size: 2.5rem;
+                top: 15%;
+            }
+        }
+
+        /* Fix hover effects for mobile */
+        @media (hover: none) {
+            .space-button:hover {
+                --active: 0;
+                transform: none;
+            }
+            
+            .space-btn:hover {
+                transform: none;
+            }
+            
+            .spiderverse-button-wrapper:hover .spiderverse-button,
+            .spiderverse-button-wrapper:hover .layer-1,
+            .spiderverse-button-wrapper:hover .layer-2 {
+                animation: none;
+            }
+        }
+
+        /* Add active states for mobile touch */
+        .space-button:active {
+            --active: 1;
+            scale: 0.95;
+        }
+
+        .space-btn:active {
+            transform: scale(0.95);
+        }
+
+        .spiderverse-button:active {
+            animation: buttonGlitch 0.3s steps(2) infinite;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                        0 0 30px rgba(0, 255, 255, 0.5),
+                        0 0 40px rgba(255, 0, 255, 0.5);
+        }
+        
+        /* Center content for desktop */
+        @media (min-width: 1024px) {
+            .hud-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .button-container {
+                margin-top: 380px;
+            }
+        }
+
+
+         /* ABOUT SECTION */
+        /* Custom fonts */
+        .font-bungee { font-family: 'Bungee', cursive; }
+        .font-electrolize { font-family: 'Electrolize', sans-serif; }
+        .font-passion-one { font-family: 'Passion One', cursive; }
+        .font-rajdhani { font-family: 'Rajdhani', sans-serif; }
+        
+        /* Custom styles for cosmic elements */
+        .cosmic-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(125, 227, 255, 0.2);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .cosmic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(125, 227, 255, 0.15);
+            border-color: rgba(125, 227, 255, 0.4);
+        }
+        
+        .cosmic-card.glow {
+            box-shadow: 0 0 20px rgba(125, 227, 255, 0.2);
+        }
+        
+        .back-about {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #7ee3ff, #f0abfc, #86efac);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            font-family: 'Bungee', cursive;
+        }
+        
+        .section-header p {
+            color: #cbd5e1;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        
+        /* Increased font sizes for About section */
+        .about-content h3 {
+            font-size: 2.5rem !important;
+        }
+        
+        .about-content p {
+            font-size: 1.6rem !important;
+            line-height: 1.8 !important;
+        }
+        
+        .about-stats p {
+            font-size: 1.2rem !important;
+        }
+        
+        .patron-name {
+            font-size: 1.8rem !important;
+        }
+        
+        .patron-role {
+            font-size: 1.3rem !important;
+        }
+        
+        .organizer-title {
+            font-size: 1.5rem !important;
+        }
+        
+        .organizer-name {
+            font-size: 1.2rem !important;
+        }
+        
+        /* Animation for text */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        /* Not selectable */
+        .not-selectable {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        body {
+            background-color: transparent;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* DOMAIN SECTION STARTS */
+
+        /* Custom styles for cosmic elements */
+.cosmic-card {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(125, 227, 255, 0.2);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.cosmic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(125, 227, 255, 0.15);
+    border-color: rgba(125, 227, 255, 0.4);
+}
+
+.cosmic-card.glow {
+    box-shadow: 0 0 20px rgba(125, 227, 255, 0.2);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #7ee3ff, #f0abfc, #86efac);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+    font-family: 'Bungee', cursive;
+}
+
+.section-header p {
+    color: #cbd5e1;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+/* Custom fonts */
+.font-bungee { font-family: 'Bungee', cursive; }
+.font-rajdhani { font-family: 'Rajdhani', sans-serif; }
+
+
+/* PATRONS SECTION  CODE STARTS STAR HERE */
+
+
+        /* Custom fonts */
+        .font-bungee { font-family: 'Bungee', cursive; }
+        .font-electrolize { font-family: 'Electrolize', sans-serif; }
+        .font-passion-one { font-family: 'Passion One', cursive; }
+        .font-rajdhani { font-family: 'Rajdhani', sans-serif; }
+        .font-transformers {
+            font-family: 'Bungee', cursive;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Custom styles for cosmic elements */
+        .cosmic-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(125, 227, 255, 0.2);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .cosmic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(125, 227, 255, 0.15);
+            border-color: rgba(125, 227, 255, 0.4);
+        }
+        
+        .cosmic-card.glow {
+            box-shadow: 0 0 20px rgba(125, 227, 255, 0.2);
+        }
+        
+        .cosmic-button {
+            background: linear-gradient(45deg, #7ee3ff, #f0abfc);
+            color: black;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 10px 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .cosmic-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(125, 227, 255, 0.4);
+        }
+        
+        .cosmic-button.ghost {
+            background: transparent;
+            border: 2px solid #7ee3ff;
+            color: #7ee3ff;
+        }
+        
+        .cosmic-button.ghost:hover {
+            background: rgba(125, 227, 255, 0.1);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #7ee3ff, #f0abfc, #86efac);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            font-family: 'Bungee', cursive;
+        }
+        
+        .section-header p {
+            color: #cbd5e1;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        
+        /* Not selectable */
+        .not-selectable {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+   
+    
+ 
